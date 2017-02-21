@@ -94,7 +94,17 @@ public class MSButton
         }
         else if(bombs.contains(this))
             displayLosingMessage();
-        //else if(countBombs())
+        else if(bombs.countBombs(r, c) > 0)
+            bombs[r][c].setLabel(bombs.countBombs(r, c) + "");
+        else 
+            bombs[r - 1][c + 1].mousePressed();
+            bombs[r][c + 1].mousePressed();
+            bombs[r + 1][c + 1].mousePressed();
+            bombs[r + 1][c].mousePressed();
+            bombs[r + 1][c - 1].mousePressed();
+            bombs[r][c - 1].mousePressed();
+            bombs[r - 1][c - 1].mousePressed();
+            bombs[r - 1][c].mousePressed();
     }
 
     public void draw () 
