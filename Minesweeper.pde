@@ -21,7 +21,8 @@ void setup ()
         for(int c = 0; c < buttons[r].length; c++)
             buttons[r][c] = new MSButton(r, c);    
     bombs = new ArrayList <MSButton>();
-    setBombs();
+    for(int i=0;i<10;i++)
+        setBombs();
 }
 public void setBombs()
 {
@@ -30,6 +31,10 @@ public void setBombs()
     int column = (int)(Math.random() * NUM_COLS);
     if(bombs.contains(buttons[row][column]) == false)
         bombs.add(buttons[row][column]);
+    else 
+    {
+        setBombs();
+    }
 
 }
 
@@ -88,7 +93,7 @@ public class MSButton
         //your code here
         if(keyPressed == true)
         {
-            marked = true;
+            marked = !marked;
             if(marked == false)
                 clicked = false;
         }
@@ -97,7 +102,9 @@ public class MSButton
         else if(countBombs(r, c) > 0)
             setLabel(countBombs(r, c) + "");
         else
-            if(isValid(r - 1, c + 1) && clicked == false) 
+        {
+            /*
+            if(isValid(r - 1, c + 1) && buttons[r-1][c+1].isClicked() == false) 
                 buttons[r - 1][c + 1].mousePressed();
             if(isValid(r, c + 1) && clicked == false)
                 buttons[r][c + 1].mousePressed();
@@ -113,6 +120,12 @@ public class MSButton
                 buttons[r - 1][c - 1].mousePressed();
             if(isValid(r - 1, c) && clicked == false)
                 buttons[r - 1][c].mousePressed();
+            */
+            for(int j = -1; j <= 1; j++)
+                for(int i = -1; i <= 1; i++)
+                    if(isValid(r + i, c + j) && buttons[r + i][c + j].isClicked() == false)
+                        buttons[r + i][c + j].mousePressed();
+        }
     }
 
     public void draw () 
@@ -137,7 +150,7 @@ public class MSButton
     public boolean isValid(int r, int c)
     {
         //your code here
-        if(r < NUM_ROWS && c < NUM_COLS && c > 0 && r > 0)
+        if(r < NUM_ROWS && c < NUM_COLS && c >= 0 && r >= 0)
             return true;
         return false;
     }
