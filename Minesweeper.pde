@@ -7,7 +7,7 @@ public final static int NUM_COLS = 20;
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> bombs; //ArrayList of just the minesweeper buttons that are mined
 
-void setup ()
+public void setup ()
 {
     size(400, 400);
     textAlign(CENTER,CENTER);
@@ -21,9 +21,11 @@ void setup ()
         for(int c = 0; c < buttons[r].length; c++)
             buttons[r][c] = new MSButton(r, c);    
     bombs = new ArrayList <MSButton>();
-    for(int i=0;i<10;i++)
+
+    for(int i=0;i<40;i++)
         setBombs();
 }
+
 public void setBombs()
 {
     //your code
@@ -103,24 +105,6 @@ public class MSButton
             setLabel(countBombs(r, c) + "");
         else
         {
-            /*
-            if(isValid(r - 1, c + 1) && buttons[r-1][c+1].isClicked() == false) 
-                buttons[r - 1][c + 1].mousePressed();
-            if(isValid(r, c + 1) && clicked == false)
-                buttons[r][c + 1].mousePressed();
-            if(isValid(r + 1, c + 1) && clicked == false)
-                buttons[r + 1][c + 1].mousePressed();
-            if(isValid(r + 1, c) && clicked == false)
-                buttons[r + 1][c].mousePressed();
-            if(isValid(r + 1, c - 1) && clicked == false)
-                buttons[r + 1][c - 1].mousePressed();
-            if(isValid(r, c - 1) && clicked == false)
-                buttons[r][c - 1].mousePressed();
-            if(isValid(r - 1, c - 1) && clicked == false)
-                buttons[r - 1][c - 1].mousePressed();
-            if(isValid(r - 1, c) && clicked == false)
-                buttons[r - 1][c].mousePressed();
-            */
             for(int j = -1; j <= 1; j++)
                 for(int i = -1; i <= 1; i++)
                     if(isValid(r + i, c + j) && buttons[r + i][c + j].isClicked() == false)
