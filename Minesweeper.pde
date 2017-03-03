@@ -23,7 +23,7 @@ public void setup ()
             buttons[r][c] = new MSButton(r, c);    
     bombs = new ArrayList <MSButton>();
 
-    for(int i=0;i<50;i++)
+    for(int i=0;i<40;i++)
         setBombs();
 }
 
@@ -59,27 +59,18 @@ public boolean isWon()
     }
     return true;
 }
-/*
-public boolean bombClicked()
-{
-    for(int r = 0; r < NUM_ROWS; r++)
-        for(int c = 0; c < NUM_COLS; c++)
-            if(bombs.contains(buttons[r][c]) && buttons[r][c].isClicked() && buttons[])
-                return true;
-    return false;
-}
-*/
+
 public void displayLosingMessage()
 {
     //your code here
-    buttons[2][7].setLabel("Y");
-    buttons[2][8].setLabel("O");
-    buttons[2][9].setLabel("U");
-    buttons[2][10].setLabel(" ");
-    buttons[2][11].setLabel("L");
-    buttons[2][12].setLabel("O");
-    buttons[2][13].setLabel("S");    
-    buttons[2][14].setLabel("E");
+    buttons[2][5].setLabel("Y");
+    buttons[2][6].setLabel("O");
+    buttons[2][7].setLabel("U");
+    buttons[2][8].setLabel(" ");
+    buttons[2][9].setLabel("L");
+    buttons[2][10].setLabel("O");
+    buttons[2][11].setLabel("S");    
+    buttons[2][12].setLabel("E");
 
 }
 public void displayWinningMessage()
